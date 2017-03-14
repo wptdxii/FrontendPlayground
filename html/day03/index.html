@@ -1,10 +1,391 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8" />
-		<title></title>
-	</head>
-	<body>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<style type="text/css">
+		/*first-letter是表示选择第一个字母*/
+		/*.p1:first-letter {
+			font-size: 30px;
+			color: red;
+		}*/
 		
-	</body>
+		/*first-line选取段落中第一行*/
+		/*.p2:first-line {
+			color: green;
+		}*/
+		
+		
+		
+		/*属性选择器，可以根据元素的指定属性来选取元素*/
+		/*选中具有title属性的p元素*/
+		/*p[title]{
+			color: yellow;
+		}*/
+		
+		/*要求p元素有title且title属性等于hello*/
+		/*p[title=hello] {
+			background-color: gray;
+		}*/
+		
+		/*要求选中p元素中有title属性的且title属性以he开头*/
+		/*p[title^=he] {
+			background-color:red ;
+		}*/
+		
+		/*找到title属性以lo结尾的元素*/
+		/*p[title$=lo] {
+			background-color: gold;
+		}
+		*/
+		/*选择title属性中包含a的*/
+		/*p[title*=w] {
+			background-color: cyan;
+		}*/
+		
+		/*都是相对于父元素来说*/
+		/*first-child会选中所有的是父元素的第一个子元素的且是p元素的元素*/
+		/*p:first-child {
+			background-color: yellow;
+		}
+		*/
+		
+		/*选中是父元素中的最后一个且是p元素的元素*/
+		/*p:last-child {
+			background-color: gray;
+		}*/
+		
+		/*nth-child可以找到是p元素且相对于父元素是指定位置的子元素*/
+		/*p:nth-child(2) {
+			background-color: yellow;
+		}*/
+		
+		/*last-of-type和last类似，只不过它是按照指定元素进排序*/
+		/*p:last-of-type {
+			background-color: red;
+		}*/
+		
+		/*为a后的p元素设置一个背景颜色*/
+		/* +用于选择元素的下一个兄弟元素*/
+		/*a + p {
+			background-color:yellow;
+		}*/
+		
+		/*~选择后边所有的指定的兄弟元素*/
+		/*a ~ p {
+			background-color: green;
+		}*/
+		
+		/* 所以但类不是p1的p元素*/
+		/*p:not(.p1) {
+			background-color: red;
+		}*/
+		
+		/*在使用选择器时规则越简单越好，选择器越短越好
+		像子元素选择器、兄弟元素选择器这种选择器尽量避免使用,因为这些关系不稳定*/
+		
+		/*在CSS中为祖先设置的样式会自动被后代元素继承,但是并不是所有的样式都能继承*/
+		
+		
+		
+		/*使用不同的选择器为同一个元素设置同样的样式，我们的浏览器会选择一种样式来显示。
+		 * 浏览器会根据选择器的优先级来选择应用那个样式，优先级高优先显示
+			 	
+			 内联样式（行内样式）: 优先级 1000 （最高的）
+			 ID选择器（#id）:优先级 100
+			 类和伪类选择器: 优先级 10
+			 元素选择器: 优先级 1
+			 通用选择器（*）: 优先级 0
+			 继承的样式：没有优先级，通用选择器也会将继承的样式覆盖
+			 	
+			 计算一个选择器的优先级时，需要将所有的选择器相加来计算
+			 优先级高的选择器会优先应用，优先级一样，谁在下边用谁。*/
+		
+		/*四个伪类选择器，他们的优先级都是一样的
+		    当我们需要为a元素设置4个伪类时，我们的顺序一般采用：
+			 l v h a    */
+			
+			/*a:link {
+				color: red;
+			}
+			a:visited {
+				color: yellow;
+			}
+			a:hover {
+				color: gray;
+			}
+			a:active {
+				color: green;
+			}*/
+			
+		/*当input获取焦点时，设置一个背景颜色*/
+		/*input:focus {
+			background-color: red;
+		}	*/
+		
+		/*当p中文字被选中时，设置文字的背景*/
+		/*p::selection {
+			color: yellow;
+		}*/
+		
+		/*这个样式只在火狐中生效*/
+		/*p::-moz-selection {
+			color: green;
+		}*/
+		
+		/*使用before或after可以选中元素前边的一部分*/
+			/*选中p元素前边的一部分*/
+			/*content可以向元素中添加指定内容*/
+			/*这个属性下周讲清除浮动时候会使用*/
+		/*p:before {
+			content: "‘";
+		}
+		
+		p:after {
+			content:"’";
+		}*/
+		
+		div {
+			height: 30px;
+			/*
+			颜色我们可以直接使用颜色的名字来表示：
+		    red blue green yellow 。。。
+			但是使用颜色的单词太麻烦
+				 * */
+			/*background-color: yellow;*/
+			
+			/*一般情况下我们去表示一个颜色使用的是rgb值的一个东西
+				 	RED GREEN BLUE 红 绿 篮
+				 * RGB值就是通过调整三元色的浓度来展现不同的颜色
+				 * 每一个颜色我们都可以设定一个0-255之间的数
+				 * 0表示没有 255表示最大
+				 * 255 0 0
+				 * 0 255 0
+				 *
+				 * * rgb使用rgb()表示
+				 * 括号需要三个数，三个数字使用,隔开
+				 * 第一个数字表示红色的浓度
+				 * 第二个数字表示绿色的浓度
+				 * 第三个数字表示蓝色的浓度
+				 * 
+				 * 如果三个数字都是255了，则是白色
+				 */
+			/*background-color: rgb(10,20,70);*/
+			
+			/*除了使用数字，我们还可以使用百分比来表示rgb值*/
+			/*background-color: rgb(20%,50%,70%);*/
+			
+			/*在CSS中还可以使用三组十六进制的数字来表示颜色
+				 * 
+				 * 最大的两位数（十六进制）
+				 * ff
+				 * 00-ff
+				 * 
+				 * 十六进制的颜色使用 #开头
+				 * 语法:#红色绿色蓝色
+				 * 
+				 * 像这种两两重复的颜色，我们可以简写
+				 * #aabbcc #abc
+				 * #ff0000 #f00
+				 * 
+				 * */
+				
+				/*background-color: #000;*/
+				background-color: #7f11de;
+		}
+		
+		
+		/*font-family用来设置页面中文字的字体*/
+		/*font-family: "Giddyup Std";*/
+		/*可以同时指定多个字体*/
+		/*可以指定自己安装的字体，"字体名" */
+		/*
+			如果同时指定多个字体，则优先使用前边的，
+			如果前边的字体浏览器不支持，则使用后边
+			以此类推
+		* */
+		.ft {
+			font-family: arial, "微软雅黑", monospace, serif;
+		}
+	</style>
+</head>
+<body>
+	<!-- em在页面中默认以斜体显示，表示标签中的内容是着重点 -->
+	<p>em元素以斜体显式，表示<em>着重点</em></p>
+
+
+	<!-- strong会对文字进行加粗显示，也是标签中的内容是重点，但是语义比em更强 -->
+	<p>strong元素以加粗显式，表示<strong>着重点</strong></p>
+
+
+	<!-- i标签用于显示斜体的文字和em显示效果一样
+			b标签用于显示加粗的文字和strong的显示效果一样
+			但是这两个标签没有任何语义
+			实际上这两个标签现在的作用很多情况都是使用它们来设置一些小的图标
+	-->
+	<p>
+		<i>这是一个i标签</i> <br />
+		<b>这是一个b标签</b>
+	</p>
+
+	<!-- small的作用可以使标签中文字的大小小于父元素中文字的大小 
+			small标签主要用来表示一些细则类的说明，如合同中的小字。
+	-->
+	<p>这是父元素文本<small>这是small元素文本</small></p>
+
+	<!-- big可以使标签中的文字大于父元素，但是big没有任何的语义 -->
+	<p>这是父元素文本<big>这是big元素文本</big></p>
+
+	<!-- font元素也可用来设置字体的大小，但不推荐使用，通常在CSS样式中设定文字大小 -->
+	<font size="6px">font元素可以设定文字大小</font>
+
+	<!--  cite元素表示引用的内容，如书名，电影舞蹈等等 -->
+	<p>这是：<cite>cite元素</cite></p>
+
+	<!-- q中的内容表示的是一个短引用，会对引用内容添加引号，引用之后的内容不换行 -->
+	<p>q元素表示：<q>短引用</q>这是引用之后</p>
+
+	<!-- blockquote表示的是一个长引用，块级引用，不会对引用内容添加引号，引用内容前后均换行-->
+	<p>blockquote元素表示：<blockquote>长引用</blockquote>这是引用之后的内容</p>
+
+	<!-- sup元素表示上标 -->
+	<p>这是一个sup<sup>sup</sup>元素</p>
+
+	<!-- sub元素表示下标 -->
+	<p>这是一个sub<sub>sub</sub>元素</p>
+
+	<!-- del标签表示一个已经删除的内容，一般del标签会加上一个删除线 -->
+	<!-- ins标签表示一个插入的内容，一般内容会加上一个下划线-->
+	<!-- del元素和ins元素通常一起使用，表示对内容的修正 -->
+	<P>我是一个<del>坏人</del><ins>好人</ins></P>
+
+	<!-- pre标签会保留内容的格式，不会忽略空格和回车 ，一般使用这个标签来表示代码，但pre没有语义  -->
+
+	<!-- code标签表示一段代码，但是并不会保留格式，所以实际使用当中一般pre和code一起使用 -->
+	<p>
+		<pre>
+			<code>
+public class Main {
+
+	public static void main(String[] args) {
+	
+		System.out.println("Hello World");
+	}
+}
+			</code>
+		</pre>
+	</p> 
+	<hr />
+	
+	<p class="p1">hello world hello world hello world</p>
+	
+	<p class="p2">hello world hello world hello world  wwwwwwwwwwwwwwwwww <br />wwwwwwwwwwwwww</p>
+	<hr />
+	
+	<!-- 每一个标签都可以设置一个属性，叫做title，设置title以后，
+		当鼠标移入到元素上时，title中的文字会作为提示信息来显示 -->
+	<p title="hello">这是一个段落</p>
+	<p title="world">这也是一个段落</p>
+	<p title="helloworld">这是一个段落</p>
+	<a href="#">这是一个链接</a>
+	<p title="hello">这是一个段落</p>
+	<p title="world">这也是一个段落</p>
+	<p title="helloworld">这是一个段落</p>
+	
+	<hr />
+	
+	<input type="text" />
+	<hr />
+	
+	<!-- 无序列表 -->
+		<!-- 创建列表使用ul标签，使用li标签代表列表中一项 -->
+		<!-- 无序列表用的比较多，我们主要使用它来创建一些类似于导航菜单的东西-->
+		<!-- ul和li都是块元素-->
+	<ul>
+		<li>列表1</li>
+		<li>列表2</li>
+		<li>列表3</li>
+	</ul>
+	
+	<hr />
+	
+	<!-- 有序列表 -->
+		<!-- 创建有序列表使用ol标签，使用li标签来创建列表项 -->
+		<!-- 和无序列表不同，有序列表使用有顺序的符号来作为项目符号 -->
+	<ol type="1">
+		<li>有序列表1</li>
+		<li>有序列表2</li>
+		<li>有序列表3</li>
+	</ol>
+	<hr />
+	<!-- 列表之间也可以互相嵌套 -->
+	<ul>
+		<li> 呵呵呵呵
+			<ol type="1">
+				<li>表1</li>
+				<li>表2</li>
+			</ol>
+		</li>
+		<li>哈哈哈哈
+			<ol type="A">
+				<li>表1</li>
+				<li>表2</li>
+			</ol>
+		</li>
+	</ul>
+	
+	<hr />
+
+
+	<!-- 定义列表 -->
+		<!-- 定义列表使用 dl 
+			dl中有两个子标签，dt和dd
+			dt表示定义的内容
+			dd表示对这个内容的描述
+			
+			定义列表和有序无序列表一样，他们都可以互相嵌套
+		-->
+	<dl>
+		<dt>html</dt>
+		<dd>这是表现</dd>
+		<dt>css</dt>
+		<dd>这是样式</dd>
+	</dl>
+	
+	<hr />
+	
+	<!-- 
+			像素是我们比较常用的单位，px
+			屏幕中的每一个小块代表一个像素1366*768
+			不同的浏览器像素的大小，在不同的浏览器使用相同的像素可能大小不一样
+			
+			百分比
+			使用百分比可以相对于父元素来设置长度
+			使用百分比的好处是父元素中的长度改变，子元素会等比的增长
+			
+			em
+			em和百分比差不多，1em = 父元素的font-size的值
+			平时使用em主要是用来去设置一些文字大小相关的样式
+			
+		-->
+		
+		<p style="font-size: 20px;">这是p中的文字<span style="font-size: 30px;">这是span中的文字</span></p>
+		<p style="font-size: 20px;">这是p中的文字<span style="font-size: 200%;">这是span中的文字</span></p>
+		<p style="font-size: 20px;">这是p中的文字<span style="font-size: 3em;">这是span中的文字</span></p>
+		
+		<div></div>
+		
+		<hr />
+		<!--<p class="ft" style="font-family: serif;">衬线字体ABCDEFGHI</p>
+		<p class="ft" style="font-family: sans-serif;">非衬线字体ABCDEFGHI</p>
+		<p class="ft" style="font-family: monospace;">等宽字体ABCDEFGHI</p>
+		<p class="ft" style="font-family: cursive;">草书字体ABCDEFGHI</p>
+		<p class="ft" style="font-family: fantasy;">魔幻字体ABCDEFGHI</p>-->
+		
+		<p class="ft" >衬线字体ABCDEFGHI</p>
+		<p class="ft" >非衬线字体ABCDEFGHI</p>
+		<p class="ft" >等宽字体ABCDEFGHI</p>
+		<p class="ft" >草书字体ABCDEFGHI</p>
+		<p class="ft" >魔幻字体ABCDEFGHI</p>
+</body>
 </html>
