@@ -3,8 +3,123 @@
 	<head>
 		<meta charset="utf-8" />
 		<title></title>
+		<style type="text/css">
+			
+			/*行高指文字所在的行的高度，文字默认是在行高当中居中的
+			 	使用line-height样式来设置行高
+			 	行间距 = 行高 - 字体的大小
+			 	一般使用行高来设置文字的行间距
+			 * */
+			p {
+				font-size: 16px;
+				line-height: 30px;
+			}
+			
+			/*单行文本时，我们经常将行高和父元素的高设置为一样的数值，来使文字在父元素中垂直居中*/
+			#div1 {
+				background-color: #bfa;
+				width: 100px;
+				height: 100px;
+				line-height: 100px;
+				
+				/*设置一个水平居中*/
+				/*left左对齐，right右对齐 center居中 justify两端对齐 */
+				text-align: center;
+			}
+			
+			/*text-transform可以用来转换文字的大小写*/
+			#p1 {
+				/*全转化为大写*/
+				/*text-transform: uppercase;*/
+				/*全转化为小写*/
+				/*text-transform: lowercase;*/
+				/*首字母大写，以空格区分单词*/
+				text-transform: capitalize;
+			}
+			
+			#p2 {
+				font-size: 16px;
+				text-align: justify;
+				/*下划线*/
+				/*text-decoration: underline;*/
+				/*上划线*/
+				/*text-decoration: overline;*/
+				/*删除线*/
+				/*text-decoration: line-through;*/
+				/*文字闪动，这个效果至今没有浏览器实现*/
+				/*text-decoration: blink;*/
+				
+				/*设置字符间距*/
+				/*letter-spacing: 5px;*/
+				/*设置单词之间的间距,调整单词之间空格的宽度*/
+				/*word-spacing: 10px;*/
+				/*如果为indent指定一个正值，则向右缩进;如果指定一个负值则向左移动,
+				 可以通过设置为负值实现文字的隐藏*/
+				/*text-indent: 2em;*/
+				/*text-indent: -1000px;*/
+			}
+			
+			a {
+				/*去掉a的下划线*/
+				text-decoration: none;
+			}
+			
+			/*border简写样式，可以同时设置四个方向边框的宽度，颜色和样式
+				 	这三个属性在border中没有顺序要求
+				 * */
+			#border {
+				/*宽高不算border的宽度*/
+				height: 100px;
+				width: 100px;
+				background-color: #BBFFAA;
+				border: solid red 10px;
+			}
+			
+			
+			/*根据CSS的规范，将每一个元素都想象是一个盒子*/
+			/*
+			 	块元素的宽度，默认是父元素的100%
+			 	高度默认被他的内容撑开
+			 	
+			 	每个盒子都有一个默认的边框，
+			 		默认的边框的样式都是设置为none
+			 		只需要为边框设置一个样式，即可看见边框
+			 	边框有三个属性来设置，没有顺序要求：
+			 		width：边框的宽度
+			 		color：边框的颜色
+			 		style：样式
+			 * */
+			#box1 {
+				/*设置文字颜色为红色*/
+				color: red;
+				
+				/*boder样式*/
+				/*实线边框*/
+				/*border-style: solid;*/
+				/*点状边框*/
+				/*border-style: dotted;*/
+				/*虚线边框*/
+				/*border-style: dashed;*/
+				/*border-style如果只指定一个样式，则会将四个边的样式都设置为相同的样式*/
+				/*也可以分别指定四个边框的样式*/
+				/*如果同时指定四个样式，则会按照上 右 下 左 顺时针的顺序分别设定样式*/
+				
+			}
+		</style>
 	</head>
 	<body>
-		
+		<div id="box1"></div>
+		<div id="border"></div>
+		<p id="p2">this is text decoration sample</p>
+		<p id="p1">ABCDEFGa bcdefg</p>
+		<div id="div1">
+			<a href="#"> this is a link</a>
+		</div>
+		<p>
+			“We should start back,” Gared urged as the woods began to grow dark around them. 
+			“The wildlings are dead.” “Do the dead frighten you?” Ser Waymar Royce asked with
+			 just the hint of a smile. Gared did not rise to the bait. He was an old man, past
+			  fifty, and he had seen the lordlings come and go. “Dead is dead,” he said. “We have
+		</p>
 	</body>
 </html>
