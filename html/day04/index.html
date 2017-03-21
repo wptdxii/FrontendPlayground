@@ -90,6 +90,7 @@
 			 		style：样式
 			 * */
 			#box1 {
+				background-color:#BBFFAA ;
 				/*设置文字颜色为红色*/
 				color: red;
 				
@@ -103,12 +104,87 @@
 				/*border-style如果只指定一个样式，则会将四个边的样式都设置为相同的样式*/
 				/*也可以分别指定四个边框的样式*/
 				/*如果同时指定四个样式，则会按照上 右 下 左 顺时针的顺序分别设定样式*/
+				border-style: solid dotted dashed double ;
+				/* 如果只指定一个样式，则四个边用同一个样式；如果指定两个样式，则上下第一个样式，
+				 左右第二个样式；如果指定三个样式，上为第一个样式，右为第二个样式，下为第三个样式，左与右
+				 样式相同;如果指定四个样式，则按上右下左顺时针的顺序应用样式。即不分别指定样式时 上下一组，左右一组*/
 				
+				
+				/*设置一个边框的颜色，边框实际上都一个默认的颜色，默认颜色和字体颜色一致*/
+				/* 边框颜色也可以分别设置为1,2,3,4个，应用的顺序与样式相同*/
+				border-color: red black yellow blue;
+				
+				/*设置边框的宽度*/
+				border-width: 5px;
+				
+				/*
+				 	设置宽度和高度是内容区的宽度和高度和其他部分无关
+				 	所以如果想要一个精确的盒子，需要将其他的部分减掉
+				 	例如这样设置会得到一个110x110 的盒子
+				 * */
+				width: 100px;
+				height: 100px;
+			}
+			
+			/*
+			 	浏览器会默认为一些元素设置一些外边距和内边距，
+			 	但是这些样式并不是我们需要的，所以往往我们需要将这些浏览器的默认样式重置
+			 * */
+			
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			
+			#box2 {
+				width: 100px;
+				height: 100px;
+				border: solid black 5px;
+				background-color: #BBFFAA;
+				
+				/*边框是盒子最外层的部分，内容区是盒子最里边的部分*/
+				/*元素的所有的子标签，都是在元素的内容区当中*/
+				/*内容区和边框之间距离称为内边距，内边距使用padding设置
+				    一共有四个方向的内边距 */
+				/*当设置padding时，会影响盒子的可见框的大小*/
+				/*padding-top: 50px;
+				padding-bottom: 50px;
+				padding-left: 50px;
+				padding-right: 50px;*/
+				/*可以简写为*/
+				/*padding: 50px;*/
+				/*或者简写为*/
+				/*padding: 10px 20px 30px 40px;*/
+				
+				/*边框和其他盒子边框的距离称为外边距*/
+				/*margin-top: 50px;*/
+				/*margin-left: 50px;*/
+				/*可以使用margin来同时指定四个方向的外边距*/
+				/*margin: 10px 20px 30px 40px;*/
+
+				/*当将左右外边距设置为auto时，浏览器会默认将左右外边距设置为相等值，即在父元素中水平居中*/
+				/*margin-left: auto;
+				margin-right: auto;*/
+				/*所以经常使用如下方式，使一个块元素在父元素中居中*/
+				/*margin: 0 auto;*/
+				/*margin还可以设置一个负值*/
+				/*margin-left: -100px;*/
+				
+			}
+			#box3 {
+				/*当未添加内容是box3是不显示的，因为块元素的宽度，默认是父元素的100%
+			 	高度默认被它的内容撑开，当没有内容时不显示*/
+			 	/*将子元素的内容区设置为和父元素一样大*/
+				width: 100%;
+				height: 100%;
+				background-color: #BBFFAA;
 			}
 		</style>
 	</head>
 	<body>
-		<div id="box1"></div>
+		<div id="box3"><a href="#">添加标签box3才会显示</a></div><br />
+		<div id="box2"><a href="#">this is a link</a></div><br />
+		<div id="box1"></div><br />
 		<div id="border"></div>
 		<p id="p2">this is text decoration sample</p>
 		<p id="p1">ABCDEFGa bcdefg</p>
