@@ -59,7 +59,7 @@
 				/*text-indent: -1000px;*/
 			}
 			
-			a {
+			#id-link {
 				/*去掉a的下划线*/
 				text-decoration: none;
 			}
@@ -175,13 +175,169 @@
 				/*当未添加内容是box3是不显示的，因为块元素的宽度，默认是父元素的100%
 			 	高度默认被它的内容撑开，当没有内容时不显示*/
 			 	/*将子元素的内容区设置为和父元素一样大*/
+			 	/*块元素的宽度会默认占父元素内容区宽度的100%,高度有它内容撑开*/
+			 	/*内联元素的宽度和高度都是被内容撑开的*/
 				width: 100%;
 				height: 100%;
 				background-color: #BBFFAA;
+				margin-top: 20px;
 			}
+			
+			/*垂直方向的外边距会发生合并，两个元素的外边距会取最大值 */
+			/*所以 box3 和box4 直接的margin为30px*/
+			#box4{
+				width: 100px;
+				height: 100px;
+				background: #BBFFAA;
+				margin-bottom: 30px;
+			}
+			
+			#box5 {
+				height: 100px;
+				width: 100px;
+				/*border: 1px red solid;*/
+				background-color: #BBFFAA;
+				/*padding-top: 20px;*/
+			}
+			
+			#box6 {
+				height: 50px;
+				width: 50px;
+				border: 1px blue solid;
+				margin-left: 30px;
+				/*当父元素没有设置padding或border时，子元素的垂直外边距会传递给父元素而不作用于自身*/
+				margin-top: 30px;
+			}
+			
+			#id-link {
+				/*内联元素的宽度和高度都是被内容撑开的*/
+				background-color: #BBFFAA;
+				border: 1px red solid;
+				
+				/*将内联元素转换为块元素*/
+				/*宽度为父元素的100% ，高度被内容撑开*/
+				/*display: block;*/
+				/*display设置none时，元素会在页面隐藏,元素不再网页占有位置*/
+				/*display: none;*/
+				/*display设置inline-block时，元素既有块元素的特点，可以设置宽和高，又有内联元素的特点，不会独占一整行*/
+				/*display: inline-block;*/
+				/*width和height对内联元素不起作用,内联元素display 设置为 inline-block才能设置宽高*/
+				/*width: 100px;*/
+				/*height: 100px;*/
+				
+				/*visibility可以用来隐藏一个元素,不同于display:none,它隐藏以后位置依然会保留*/		
+				/*visibility:hidden;*/
+				
+				
+			}
+			
+			
+			#a1 {
+				border: 1px red solid;
+				background-color: #BBFFAA;
+				
+				/*内联元素支持水平方向的padding和margin*/
+				padding-left: 20px;
+				padding-right: 20px;
+				
+				/*垂直方向的padding会在内联元素中起作用，但是它并不会影响布局*/
+				padding-top: 20px;
+				padding-bottom: 20px;
+				
+				margin-left: 20px;
+				margin-right: 20px;
+				
+				/*内联元素不支持垂直方向的外边距*/
+				/*margin-top: 200px;
+				margin-bottom: 20px;*/
+			}
+			
+			#box7 {
+					width: 200px;
+					height: 200px;
+					background-color: #BBFFAA;
+					border: 1px red solid;
+					
+					/*当内容超过元素大小时：*/
+					/*hidden会将多余内容修减不显示*/
+					/*overflow: hidden;*/
+					/*overflow: scroll;*/
+					/*会根据需要生成滚动条*/
+					overflow: auto;
+					
+					/*在IE6中如果内容过多，当设定父元素宽高固定时，会撑开父元素，导致父元素的宽度或者高度失效
+				 	这是因为在IE6中，宽度和高度它实际上相当于最小宽度，和最小高度*/
+				}
+				
+				body {
+					font-size: 8px;
+				}
+				
+				p {
+					/*一般浏览器中的文字的大小设置16px*/
+					font-size: 2em;
+					/*文字的字体*/
+					font-family: arial "微软雅黑" sans-serif;
+				}
+				#p3 {
+				/*  设置字体为斜体
+				 	斜体和倾斜在大部分浏览器中并不做区分
+				 	所以这两个样式的显示效果是基本一致
+				 	使用时只使用italic即可*/
+					/*font-style: italic;*/
+					/*font-style: oblique;*/
+					
+					/*设置一个小型大写字母*/
+				    /*设置完小型大写字母以后，小写字母会变成大写字母，但是比正常大写字母小一些*/
+					/*font-variant: small-caps;*/
+					
+					/*设置一个粗体*/
+					/*font-weight用来设置字体加粗，我们一般会使用bold这个值*/
+					/*也可以设置一个100 - 900粗细的级别*/
+					/*我们这9个级别不一定是一级比一级粗，有可能100 - 500的粗细都是一样*/
+					/*这个数值这块我们使用的比较少*/
+					/*font-weight: 600;*/
+					/*font-weight:lighter ;*/
+					/*font-weight: bold;*/
+					
+					/*可以使用font属性来设置所有的字体样式*/
+					/*使用font简写属性需要注意使用的顺序，简单来说后两个必须是大小和字体，其他随便*/
+					/*font属性必须要设置大小和字体，其他属性可以省略*/
+					/*weight style variant顺序无所谓，也可以省略，不写属性会使用默认值*/
+					/*在简写font属性时，还可以在字体大小后边跟着一个行高的值*/
+					/*当设置多个字体时需要用逗号隔开*/
+					font: italic bold 20px/60px "微软雅黑" ,sans-serif;
+					border: 1px red solid;
+					background-color: #BBFFAA;
+				}
+				
+				/*font的各种属性如果没有设置，不会使用父元素继承来样式，而是使用默认值，如果希望继承父元素的font属性，
+				 需要再声明一次*/
+				span{
+					font: 60px/100px "微软雅黑";	
+				}
 		</style>
 	</head>
 	<body>
+		<br />
+		<p id="p3">ABCDEFGabcdefg中文 斜体<span>THIS is span 中文</span></p><br />
+		<div id="box7">
+			<p>
+				这上面的夜的天空，奇怪而高，我生平没有见过这样奇怪而高的天空。他仿佛要离开人间而去，使人们仰面不再看见。
+				然而现在却非常之蓝，闪闪地䀹着几十个星星的眼，冷眼。他的口角上现出微笑，似乎自以为大有深意，
+				而将繁霜洒在我的园里的野花草上。			
+			我不知道那些花草真叫什么名字，人们叫他们什么名字。我记得有一种开过极细小的粉红花，现在还开着，但是更极细小了，
+			她在冷的夜气中，瑟缩地做梦，梦见春的到来，梦见秋的到来，梦见瘦的诗人将眼泪擦在她最末的花瓣上，告诉她秋虽然来，
+			冬虽然来，而此后接着还是春，蝴蝶乱飞，蜜蜂都唱起春词来了。她于是一笑，虽然颜色冻得红惨惨地，仍然瑟缩着。
+			</p>
+		</div>
+		<br />
+		<a id="a1" href="#">this is a link</a><a id="a2" href="#">this is also a link</a><br />
+		<a id="id-link" href="#">hello</a>hello
+		<div id="box5">
+			<div id="box6"></div>
+		</div>
+		<div id="box4"><a href="#">this is box4</a></div>
 		<div id="box3"><a href="#">添加标签box3才会显示</a></div><br />
 		<div id="box2"><a href="#">this is a link</a></div><br />
 		<div id="box1"></div><br />
