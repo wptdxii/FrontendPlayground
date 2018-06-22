@@ -1,3 +1,16 @@
-p {
-	color: green;
+header {
+	text-align: center;
+}
+
+nav {
+	text-align: center
+}
+
+section {
+	text-align: center;
+	color: black;
+}
+
+footer {
+	text-align: center;
 }
