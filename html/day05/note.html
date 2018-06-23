@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8" />
+	<title>浮动</title>
+
+	<!-- 文档流 
+			元素默认就处在网页的文档流中排列，文档流指的就是元素的排列方式。
+			处在文档流中的元素，总会按照一个从左到右，从上到下的顺序进行排列
+		-->
+
+	<!-- 当为一个元素设置浮动以后，这个元素将会完全脱离文档流
+				 	它会尽力向整个网页最上边浮动，或者是向左或者是向右
+				 	直到遇到父元素的边框，或者是其他的浮动元素，则会停止浮动
+				 	浮动时候，最高它不会超过他上边的元素 -->
+
+	<style type="text/css">
+		* {
+			margin: 0;
+			padding: 0;
+		}
+
+		/*
+			当块元素设置浮动以后，宽度不再占父元素的100%,而是被内容撑开
+		*/
+
+		/*
+		 	设置一个元素的浮动，不会影响文本内容
+		 	所以我们经常会为一个图片设置浮动效果，然后使文本环绕文字
+		 * */
+
+		/*当给一个内联元素设置浮动时，内联元素将会变成块元素, 但因为设置的浮动，宽度不再为父元素的 100%。
+		可以为该元素设置宽高*/
+
+		/*clear清除浮动，作用是清除浮动对当前元素的影响*/
+
+		/*当子元素设置浮动以后，会导致子元素脱离文档流
+			脱离以后将不能撑起父元素的高度，这样将会导致父元素的高度塌陷。有以下两种解决方案:
+			
+				1. 可以通过将父元素的高设置为子元素的高解决
+				2. 为父元素设置设置如下两个属性：
+					overflow: hidden;
+					zoom : 1; // 用于兼容 ie6
+		* */
+
+		/*
+			 
+			 * 在W3C规范中，每一个元素都有一个隐藏的属性，叫做BFC（Block Fomating Context）
+			 * 每一个元素的BFC默认都是关闭的，当一个元素开启了BFC以后，会具有如下特性：
+			 * 	1.开启了BFC的元素，垂直外边距不会重叠
+			 *  2.开启了BFC的元素，不会和浮动元素重叠
+			 *  3.开启了BFC的元素可以包含浮动元素
+			 * 
+			 *  开启BFC的方式：
+			 * 	 1.设置元素：display为inline-block(该种方式会造成块元素的宽度不能自适应)
+			 * 	 2.设置父元素浮动！	
+			 *   3.设置元素：overflow非默认值的值
+			 * 
+			 * 
+			 * 但是IE8以前的浏览器他们对BFC的支持不太好，
+			 * 但是IE中有一个特性叫做HasLayout，这个特性和BFC类似
+			 * 当我们在IE中开启HasLayout以后，也可以使父元素包含浮动的子元素
+			 * 开启方式：
+			 * 	1.设置元素浮动
+			 *  2.设置zoom:1
+			 * 
+			 * 解决父元素高度塌陷又一种方案：
+			 * 	设置父元素两个属性：
+			 * 		overflow:hidden
+			 * 		zoom:1（如果需要兼容IE6）
+			 * 
+			 * 问题：
+			 * 	如果将父元素的overflow设置为hidden，
+			 * 	将会导致绝对定位的子元素，超出父元素的部分不能显示
+			 * 
+			 * */
+
+		#box1 {
+			width: 50px;
+			height: 50px;
+			background-color: red;
+
+			/*当为一个元素设置浮动以后，这个元素将会完全脱离文档流
+				 	它会尽力向整个网页最上边浮动，或者是向左或者是向右
+				 	直到遇到父元素的边框，或者是其他的浮动元素，则会停止浮动
+				 	浮动时候，最高它不会超过兄弟元素 
+				*/
+			/*
+				 设置一个元素的浮动，不会影响文本内容
+		 		所以我们经常会为一个图片设置浮动效果，然后使文本环绕文字
+				 */
+			/*
+				 当块元素设置浮动以后，宽度不再占父元素的100%
+				 而是被内容撑开
+				 */
+			float: left;
+
+		}
+
+		#box2 {
+			width: 100px;
+			height: 100px;
+			background-color: gold;
+			float: right;
+		}
+
+		#box3 {
+			width: 150px;
+			height: 150px;
+			background-color: aquamarine;
+			/*float: left;*/
+			/*clear清除浮动，作用是清除浮动对当前元素的影响*/
+			/*left表示清除左侧浮动对当前元素的影响*/
+			/*clear: left;*/
+			/*清除右侧浮动对当前元素的影响*/
+			/*clear: right;*/
+			/*清除两侧的浮动*/
+			clear: both;
+		}
+
+		#a1 {
+			width: 50px;
+			height: 50px;
+			background-color: #7FFFD4;
+			text-decoration: none;
+			/*当给一个内联元素设置浮动时，内联元素将会变成块元素(inline block)*/
+			/*未设置浮动之前 width height 无效*/
+			float: left;
+		}
+
+		.hr-divider {
+			clear: both;
+			margin-top: 30px;
+			margin-bottom: 30px;
+		}
+
+		/**************************************************************/
+
+		#box4 {
+			border: 1px blueviolet solid;
+		}
+
+		#box5 {
+			/*当子元素设置浮动以后，会导致子元素脱离文档流
+			 	    脱离以后将不能撑起父元素的高度，这样将会导致父元素的高度塌陷
+			 	*/
+			width: 50px;
+			height: 50px;
+			border: 1px red solid;
+			background-color: bisque;
+			float: left;
+		}
+
+		/* 清除父元素box4高度塌陷的一种方法*/
+
+		.clear {
+			clear: both;
+		}
+
+
+		#box6 {
+			border: 1px blueviolet solid;
+
+			/*开启bfc*/
+			/*使用inline-block会使用块元素的宽度不能自适应*/
+			/*display: inline-block;*/
+			/*一般常常使用overflow:hidden来开启元素的BFC*/
+			/*将会导致绝对定位的子元素，超出父元素的部分不能显示*/
+			overflow: hidden;
+
+			/*开启HasLayout*/
+			/*这个属性只有IE6认识，其他的浏览器都不认识*/
+			/*为了兼容IE6*/
+			zoom: 1;
+		}
+
+		#box7 {
+			/*当子元素设置浮动以后，会导致子元素脱离文档流
+			 	    脱离以后将不能撑起父元素的高度，这样将会导致父元素的高度塌陷
+			 	*/
+			width: 50px;
+			height: 50px;
+			border: 1px red solid;
+			background-color: bisque;
+			float: left;
+		}
+
+		/**************************************************************************************/
+
+		#box8 {
+			border: 1px blueviolet solid;
+		}
+
+		#box9 {
+			/*当子元素设置浮动以后，会导致子元素脱离文档流
+			 	    脱离以后将不能撑起父元素的高度，这样将会导致父元素的高度塌陷
+			 	*/
+			width: 50px;
+			height: 50px;
+			border: 1px red solid;
+			background-color: bisque;
+			/*float: left;*/
+		}
+
+		/*在需要解决父元素高度塌陷的地方，类名设置为 clearfix*/
+
+		/*选中父元素的后边*/
+
+		/*.clearfix:before,为解决垂直外边距的合并问题 ，
+			因为当父元素 没有设置 padding 或者 border 时，相邻子元素的 margin 会与父元素合并，
+			通过 .clearfix:before 插入空元素，让之前相邻的子元素与之隔离。在box10 和box11中起作用*/
+
+		/* 
+			.clearfix:before 用于解决当子元素设置垂直方向 margin 时，外边距合并的问题
+			.clearfix:after 用于解决父元素高度坍塌的问题
+		 */
+		.clearfix:before,
+		.clearfix:after {
+			/*向父元素后部添加一个内容*/
+			content: "";
+			/*修改它显示样式为块元素*/
+			display: table;
+			/*清除块元素左右的浮动*/
+			clear: both;
+		}
+
+		/*IE6不支持after伪类,单独设置, 用于解决父元素高度坍塌的问题*/
+		.clearfix {
+			zoom: 1;
+		}
+
+		/**************************************************************************************/
+
+		/* 父元素没有border和padding， 且子元素没有border时， 子元素的垂直外边距会传递给父元素(即父元素和子元素相邻时，会发生子元素margin传递)*/
+
+		#box10 {
+			/*border: 1px blueviolet solid;*/
+			background-color: yellow;
+			/*padding: 5px;*/
+		}
+
+		#box11 {
+			/*当子元素设置浮动以后，会导致子元素脱离文档流
+			 	    脱离以后将不能撑起父元素的高度，这样将会导致父元素的高度塌陷
+			 	*/
+			width: 50px;
+			height: 50px;
+			/*子元素的padding不会影响 子元素的 margin向父元素的传递，满足传递的条件还是会传递*/
+			/*padding: 50px;*/
+			margin-top: 100px;
+			/*border: 1px red solid;*/
+			background-color: bisque;
+			/*float: left;*/
+		}
+	</style>
+</head>
+
+<body>
+	<!-- 文档流 
+			元素默认就处在网页的文档流中排列，文档流指的就是元素的排列方式。
+			处在文档流中的元素，总会按照一个从左到右，从上到下的顺序进行排列
+		-->
+	<div id="box1">box1</div>
+	<div id="box2">box2</div>
+	<div id="box3">box3</div>
+	<p id="p1">
+		我忽而听到夜半的笑声，吃吃地，似乎不愿意惊动睡着的人，然而四围的空气都应和着笑。夜半，没有别的人， 我即刻听出这声音就在我嘴里，我也即刻被这笑声所驱逐，回进自己的房。灯火的带子也即刻被我旋高了。 我忽而听到夜半的笑声，吃吃地，似乎不愿意惊动睡着的人，然而四围的空气都应和着笑。夜半，没有别的人，
+		我即刻听出这声音就在我嘴里，我也即刻被这笑声所驱逐，回进自己的房。灯火的带子也即刻被我旋高了。
+	</p>
+	<a href="#" id="a1">this is a1</a>
+	<hr class="hr-divider" />
+	<!-- 父元素高度塌陷-->
+	<div id="box4">
+		<div id="box5">
+			box5
+		</div>
+		<!-- 解决父元素box4高度塌陷的第一种方法-->
+		<div class="clear"></div>
+	</div>
+
+	<hr class="hr-divider" />
+
+	<div id="box6">
+		<!-- 解决父元素box4高度塌陷的第二种方法-->
+		<div id="box7">
+			box7
+		</div>
+	</div>
+
+	<hr class="hr-divider" />
+	<div id="box8" class="clearfix">
+		<div id="box9">
+			box9
+		</div>
+	</div>
+
+	<hr class="hr-divider" />
+	<div id="box10" class="clearfix">
+		<div id="box11">
+			box11
+		</div>
+	</div>
+</body>
+
+</html>

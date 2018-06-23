@@ -10,13 +10,13 @@
 			color: red;
 		}*/
 		
+
 		/*first-line选取段落中第一行*/
 		/*.p2:first-line {
 			color: green;
 		}*/
 		
-		
-		
+
 		/*属性选择器，可以根据元素的指定属性来选取元素*/
 		/*选中具有title属性的p元素*/
 		/*p[title]{
@@ -37,9 +37,10 @@
 		/*p[title$=lo] {
 			background-color: gold;
 		}
+
 		*/
 		/*选择title属性中包含a的*/
-		/*p[title*=w] {
+		/*p[title*=a] {
 			background-color: cyan;
 		}*/
 		
@@ -64,6 +65,11 @@
 		/*p:last-of-type {
 			background-color: red;
 		}*/
+
+		/* nth-of-type(An+B)，按照指定元素类型，从 B 个元素开始，每隔 A 个元素都会被选中*/
+		/* 
+			p:nth-of-type(2n + 3) {}
+		*/
 		
 		/*为a后的p元素设置一个背景颜色*/
 		/* +用于选择元素的下一个兄弟元素*/
@@ -89,10 +95,9 @@
 		像子元素选择器、兄弟元素选择器这种选择器尽量避免使用,因为这些关系不稳定*/
 		
 		/*在CSS中为祖先设置的样式会自动被后代元素继承,但是并不是所有的样式都能继承， 
-		 * 如background 就不会被继承，但子元素看上去还是还是会继承父元素的北京颜色，
+		 * 如background 就不会被继承，但子元素看上去还是还是会继承父元素的背景颜色，
 		 * 是因为background默认的颜色是transparent
 		 * */
-		
 		
 		
 		/*使用不同的选择器为同一个元素设置同样的样式，我们的浏览器会选择一种样式来显示。
@@ -224,6 +229,12 @@
 		* */
 		.ft {
 			font-family: arial, "微软雅黑", monospace, serif;
+		}
+
+
+		/* 去掉列表符号 */
+		ul {
+			list-style: none;
 		}
 	</style>
 </head>
