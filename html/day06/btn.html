@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CSS Sprite</title>
+    <style>
+    
+        #button {
+            width: 93px;
+            height: 29px;
+            display: block;
+            background: url(img/btn/hello.png);
+            text-decoration: none;
+        }
+
+        #button:hover {
+            background-position: -93px 0;
+        }
+
+        #button:active {
+            background-position: -186px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <a href="#" id="button"></a>
+</body>
+</html>

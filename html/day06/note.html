@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Note</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .box {
+
+            width: 100px;
+            height: 100px;
+            margin: 0 auto;
+
+            /*设置背景颜色*/
+            background-color: #bfa;
+
+            /*设置一个背景图片*/
+            /*如果图片比元素大，会截取图片的一部分显示*/
+            /*background-image: url(img/1.jpg);*/
+            /*如果图片比元素小，则默认会以平铺的方式，将图片铺满背景*/
+            background-image: url(img/2.png);
+
+            /*repeat会使背景图片在水平和垂直两个方向同时重复*/
+            /*background-repeat: repeat;*/
+            /*no-repeat表示的不重复*/
+            /*background-repeat: no-repeat;*/
+            /*repeat-x可以使背景水平方向重复
+					repeat-y可以使图像垂直方向重复				 
+				 * */
+            /*background-repeat: repeat-y;*/
+            background-repeat: no-repeat;
+
+            /*设置背景图片的位置*/
+            /*
+				 	我们可以通过几个方位单词来设置图片的位置：
+				 	top right bottom left center
+				 	我们一般需要指定两个位置来确定背景图片位置
+				 	如果只指定了一个位置，则第二个默认是center
+				 * 
+				 * */
+            /*background-position: left;*/
+            /*我们还可以通过指定一个偏移量，来设置背景图片的位置
+				 	需要两个值：
+				 		第一个值是 水平方向的偏移量
+				 		第二个值是垂直方向的偏移量
+				 * */
+            /*background-position: 100px 200px;*/
+            /*偏移量可以指定负值，指定负值时会向反方向移动背景图片*/
+            background-position: 400px 100px;
+            /*可以设置背景图片不随屏幕滚动，我们一般会给body的背景来设置该样式*/
+            background-attachment: fixed;
+            /*
+				 	所有可继承的样式都是子元素继承父元素的样式。
+				 	但是当我们为body去设置背景时，这个背景会向上传递，传递给HTML元素
+                     但在实际使用过程中不成问题，因为body会被撑开,然后图片的中心会与body 的中心对齐
+				 * */
+            /*使用background属性可以指定所有的背景相关的样式
+				 	没有顺序和数量的要求
+				 * */
+            /*background: #bfa url(img/2.png) no-repeat 500px 0 fixed;*/
+            /**
+				 * 我们还可以为一个元素同时指定多个背景图片 
+				 */
+            /*多张背景图片，IE8以下的浏览器不支持*/
+            background: url(img/1.png) fixed,
+            url(img/exer/scroll_bottom.jpg) no-repeat bottom center,
+            url(img/exer/scroll_middle.jpg) repeat-y center center;
+        }
+
+        /*
+			 	在开发中我们经常将多个小的图片整合到一张大图上，
+			 	然后通过background-position方式来调整要显示的图片
+			 	这样做的好处，可以减少浏览器发送请求的次数、降低服务器的压力，
+			 	同时也会降低文件的大小，而且最重要的是提高用户的体验。
+			 	这种技术我们称为图片整合技术，CSS Sprite
+			 	
+			 	缺点：
+			 		它只能适用于使用背景图片的情况
+			 * 
+			 * */
+
+        /*
+			 	浏览器在加载图片时，它是在图片使用时才加载
+			 * */
+    </style>
+</head>
+
+<body>
+    <div class="box"></div>
+</body>
+
+</html>

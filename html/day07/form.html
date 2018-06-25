@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="target.html">
+        <fieldset>
+            <legend>用户信息</legend>
+            <label for="username">
+                文本框：
+            </label>
+            <input type="text" id="username" name="username">
+            <br />
+            <br /> 密码:
+            <input type="password" name="password">
+            <br />
+            <br /> 性别：
+            <input type="radio" name="gender" value="male" id="male">
+            <label for="male">男</label>
+            <input type="radio" name="gender" value="female" id="female">
+            <label for="female">女</label>
+            <br />
+            <br /> 爱好:
+            <input type="checkbox" name="hobby" value="ppq" checked> 乒乓球
+            <input type="checkbox" name="hobby" value="ymq"> 羽毛球
+            <input type="checkbox" name="hobby" value="lq" checked> 篮球
+            <br/>
+            <br/> 你喜欢的明星:
+
+            <select name="idol">
+                <optgroup label="男明星">
+                    <option value="jjw">sb</option>
+                    <option value="jjw">sb</option>
+                    <option value="jjw">sb</option>
+                </optgroup>
+                <optgroup label="女明星">
+                    <option value="jjw">贾静雯</option>
+                    <option value="jjw">贾静雯</option>
+                    <option value="jjw" selected>贾静雯</option>
+                </optgroup>
+            </select>
+            <br/>
+            <br/> <label for="profile" style="vertical-align: top">自我介绍：</label>
+            <textarea name="prifle" id="prifile" cols="30" rows="10" style="resize: none"></textarea>
+            <br/>
+            <br/> <input type="reset" value="重置">
+            <br/>
+            <br/>
+
+            <select name="city" >
+                <option value="bj">北京</option>
+                <option value="bj">北京</option>
+                <option value="bj">北京</option>
+            </select> 市
+
+            <select name="city" >
+                <option value="bj">北京</option>
+                <option value="bj">北京</option>
+                <option value="bj">北京</option>
+                <option value="bj">北京</option>
+            </select> 区
+
+            <br />
+            <br />
+            <button type="button">按钮</button>
+            <br />
+            <br />
+            <input type="submit" value="提交">
+        </fieldset>
+    </form>
+</body>
+
+</html>
